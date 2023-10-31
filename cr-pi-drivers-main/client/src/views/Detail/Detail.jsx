@@ -15,7 +15,15 @@ const Detail = () => {
 
   return (
     <>
-      <h1>{driver.name}</h1>
+      <h1>
+        {driver.name}
+        {driver.lastname}
+      </h1>
+      <h3>{driver.nationality}</h3>
+      <img src={driver.image} alt={driver.name} />
+      <p>{driver.description}</p>
+      <p>{driver.dob}</p>
+      <div>{driver.teams}</div>
     </>
   );
 };

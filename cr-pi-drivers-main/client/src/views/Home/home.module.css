@@ -1,0 +1,9 @@
+.homeContainer {
+  margin-top: 80px;
+}
+
+.filters {
+  display: flex;
+  height: 5vh;
+  justify-content: center;
+}

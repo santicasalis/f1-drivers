@@ -7,12 +7,12 @@ const postDriver = async (
   image,
   nationality,
   dob,
-  team
+  teams
 ) => {
   try {
     // Primero, intenta encontrar el equipo existente o crearlo si no existe
     const [teamName, created] = await Team.findOrCreate({
-      where: { name: team }, // Buscar por el nombre del equipo
+      where: { name: teams }, // Buscar por el nombre del equipo
     });
 
     // Crea un nuevo conductor con el equipo encontrado o creado
@@ -23,6 +23,7 @@ const postDriver = async (
       image,
       nationality,
       dob,
+      teams,
       TeamId: teamName.id, // Asocia el ID del equipo al conductor
     });
 

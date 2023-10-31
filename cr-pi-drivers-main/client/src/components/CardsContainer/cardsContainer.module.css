@@ -1,0 +1,15 @@
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination div {
+  margin: 0.5rem 2rem;
+}

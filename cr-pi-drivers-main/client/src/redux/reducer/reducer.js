@@ -1,5 +1,9 @@
-/* eslint-disable no-case-declarations */
-import { GET_DRIVERS, GET_DRIVER, ORDER_DRIVER } from "../actions/actionTypes";
+import {
+  GET_DRIVERS,
+  GET_DRIVER,
+  ORDER_DRIVER,
+  GET_DRIVERS_NAME,
+} from "../actions/actionTypes";
 
 const initialState = {
   drivers: [],
@@ -14,6 +18,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, driver: action.payload };
 
     case ORDER_DRIVER:
+      // eslint-disable-next-line no-case-declarations
       let driversOrdered;
       if (action.payload === "A")
         driversOrdered = [...state.drivers].sort((a, b) => a.id - b.id);
@@ -40,6 +45,8 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         drivers: driversOrdered,
       };
+    case GET_DRIVERS_NAME:
+      return { ...state, drivers: action.payload };
 
     default:
       return { ...state };
