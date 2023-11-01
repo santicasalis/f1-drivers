@@ -1,32 +1,25 @@
 import { useState } from "react";
 import axios from "axios";
+import { validateInput } from "./validations";
 import style from "../Form/form.module.css";
 const Form = () => {
   const [form, setForm] = useState({
-    name: "",
-    surname: "",
+    lastname: "",
     nationality: "",
     dob: "",
     teams: "",
     image: "",
     description: "",
+    name: "",
   });
 
-  const [errors, setErrors] = useState({
-    name: "",
-    surname: "",
-    nationality: "",
-    dob: "",
-    teams: "",
-    image: "",
-    description: "",
-  });
+  const [errors, setErrors] = useState({});
 
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
+    setErrors(validateInput({ ...form, [property]: value }));
     setForm({ ...form, [property]: value });
-    validate({ ...form, [property]: value });
   };
 
   const submitHandler = (event) => {
@@ -36,96 +29,106 @@ const Form = () => {
       .post("http://localhost:3001/drivers", form)
 
       .then((res) => alert(res))
-      // .then(
-      //   setForm({
-      //     name: "",
-      //     surname: "",
-      //     nationality: "",
-      //     dob: "",
-      //     teams: "",
-      //     image: "",
-      //   })
+
+      .then(
+        setForm({
+          name: "",
+          lastname: "",
+          nationality: "",
+          dob: "",
+          teams: "",
+          image: "",
+        })
+      )
       .catch((error) => console.log(error));
   };
-
-  const validate = (form) => {
-    if (form.name != 5) {
-      setErrors({ ...errors, name: "" });
-    } else {
-      setErrors({ ...errors, name: "hay un error" });
-    }
-    if (form.name === "") setErrors({ ...errors, name: "name empty" });
+  const isFormValid = () => {
+    const allFieldsAreFilled = Object.values(form).every(
+      (field) => field.trim() !== ""
+    );
+    const noErrorsPresent = Object.values(errors).every((error) => !error);
+    return allFieldsAreFilled && noErrorsPresent;
   };
 
   return (
     <>
-      <div className={style.formContainer}>
-        <form onSubmit={submitHandler}>
+      <div className={style.formViewContainer}>
+        <form className={style.formContainer} onSubmit={submitHandler}>
           <div>
-            <label htmlFor="">Name</label>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               value={form.name}
               onChange={changeHandler}
               name="name"
             />
-            {errors.name && <span>{errors.name}</span>}
+            <div className={style.errorMessage}>{errors?.name}</div>
           </div>
+
           <div>
-            <label htmlFor="">Last Name</label>
+            <label htmlFor="lastname">Last Name</label>
             <input
               type="text"
-              value={form.surname}
+              value={form.lastname}
               onChange={changeHandler}
-              name="surname"
+              name="lastname"
             />
+            <div className={style.errorMessage}>{errors?.lastname}</div>
           </div>
           <div>
-            <label htmlFor="">Nationality</label>
+            <label htmlFor="nationality">Nationality</label>
             <input
               type="text"
               value={form.nationality}
               onChange={changeHandler}
               name="nationality"
             />
+            <div className={style.errorMessage}>{errors?.nationality}</div>
           </div>
           <div>
-            <label htmlFor="">Day of birth</label>
+            <label htmlFor="dob">Day of birth</label>
             <input
               type="text"
               value={form.dob}
               onChange={changeHandler}
               name="dob"
+              placeholder="YYYY-MM-DD"
             />
+            <div className={style.errorMessage}>{errors?.dob}</div>
           </div>
           <div>
-            <label htmlFor="">Teams</label>
+            <label htmlFor="teams">Teams</label>
             <input
               type="text"
               value={form.teams}
               onChange={changeHandler}
               name="teams"
             />
+            <div className={style.errorMessage}>{errors?.teams}</div>
           </div>
           <div>
-            <label htmlFor="">Image</label>
+            <label htmlFor="image">Image</label>
             <input
               type="text"
               value={form.image}
               onChange={changeHandler}
               name="image"
             />
+            <div className={style.errorMessage}>{errors?.image}</div>
           </div>
           <div>
-            <label htmlFor="">description</label>
-            <input
-              type="text"
+            <label htmlFor="description">description</label>
+            <textarea
               value={form.description}
               onChange={changeHandler}
               name="description"
             />
+            <div className={style.errorMessage}>{errors?.description}</div>
           </div>
-          <button type="submit">Submit</button>
+
+          <button type="submit" disabled={!isFormValid()}>
+            Submit
+          </button>
         </form>
       </div>
     </>

@@ -2,7 +2,7 @@ const { Driver, Team } = require("../db");
 
 const postDriver = async (
   name,
-  surname,
+  lastname,
   description,
   image,
   nationality,
@@ -12,19 +12,18 @@ const postDriver = async (
   try {
     // Primero, intenta encontrar el equipo existente o crearlo si no existe
     const [teamName, created] = await Team.findOrCreate({
-      where: { name: teams }, // Buscar por el nombre del equipo
+      where: { name: teams },
     });
 
-    // Crea un nuevo conductor con el equipo encontrado o creado
     const newDriver = await Driver.create({
       name,
-      surname,
+      lastname,
       description,
       image,
       nationality,
       dob,
       teams,
-      TeamId: teamName.id, // Asocia el ID del equipo al conductor
+      TeamId: teamName.id,
     });
 
     return newDriver;
@@ -32,15 +31,5 @@ const postDriver = async (
     throw error;
   }
 };
-
-//   const newDriver = await Driver.create({
-//     name,
-//     surname,
-//     description,
-//     image,
-//     nationality,
-//     dob,
-//   });
-//   return newDriver;
 
 module.exports = postDriver;

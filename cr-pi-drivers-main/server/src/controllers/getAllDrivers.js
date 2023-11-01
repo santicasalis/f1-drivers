@@ -22,7 +22,7 @@ const getAllDrivers = async (req, res) => {
     });
 
     const driversDb = await Driver.findAll();
-
+    console.log(driversDb);
     const driversDbOrdered = driversDb.map((driver) => ({
       id: driver.id,
       name: driver.name,
@@ -30,8 +30,8 @@ const getAllDrivers = async (req, res) => {
       description: driver.description,
       image: driver.image,
       nationality: driver.nationality,
-      birthdate: driver.birthdate,
-      teams: driver.Teams.map((team) => team.name),
+      dob: driver.dob,
+      teams: driver.teams,
     }));
 
     return [...dataDrivers, ...driversDbOrdered];

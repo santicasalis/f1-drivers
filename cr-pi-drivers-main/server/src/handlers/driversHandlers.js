@@ -30,12 +30,12 @@ const getDriverHandler = async (req, res) => {
 
 const createDriverHandler = async (req, res) => {
   try {
-    const { name, surname, description, image, nationality, dob, teams } =
+    const { name, lastname, description, image, nationality, dob, teams } =
       req.body;
-    //console.log(req.body);
+
     const newDriver = await postDriver(
       name,
-      surname,
+      lastname,
       description,
       image,
       nationality,

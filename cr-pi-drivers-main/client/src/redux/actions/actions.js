@@ -4,6 +4,8 @@ import {
   GET_DRIVER,
   ORDER_DRIVER,
   GET_DRIVERS_NAME,
+  GET_TEAMS,
+  GET_CREATED,
 } from "../actions/actionTypes";
 
 export const getDrivers = () => {
@@ -39,4 +41,15 @@ export const getDriversName = (search) => {
 
     dispatch({ type: GET_DRIVERS_NAME, payload: drivers });
   };
+};
+
+export const getTeams = () => {
+  return async function (dispatch) {
+    const apiData = await axios.get("http://localhost:3001/teams");
+    const teams = apiData.data;
+    dispatch({ type: GET_TEAMS, payload: teams });
+  };
+};
+export const getDriverCreated = (createDb) => {
+  return { type: GET_CREATED, payload: createDb };
 };
