@@ -19,7 +19,6 @@ const TeamFilter = ({ handleCloseModal }) => {
 
   useEffect(() => {
     dispatch(getTeams());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const teams = useSelector((state) => state.teams);
   console.log(selectedTeams);
