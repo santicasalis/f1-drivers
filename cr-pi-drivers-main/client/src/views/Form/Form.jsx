@@ -7,7 +7,7 @@ const Form = () => {
     lastname: "",
     nationality: "",
     dob: "",
-    teams: "",
+    teams: [],
     image: "",
     description: "",
     name: "",
@@ -18,6 +18,7 @@ const Form = () => {
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
+
     setErrors(validateInput({ ...form, [property]: value }));
     setForm({ ...form, [property]: value });
   };
@@ -36,18 +37,19 @@ const Form = () => {
           lastname: "",
           nationality: "",
           dob: "",
-          teams: "",
+          teams: [],
           image: "",
+          description: "",
         })
       )
       .catch((error) => console.log(error));
   };
   const isFormValid = () => {
     const allFieldsAreFilled = Object.values(form).every(
-      (field) => field.trim() !== ""
+      (field) => field !== ""
     );
     const noErrorsPresent = Object.values(errors).every((error) => !error);
-    return allFieldsAreFilled && noErrorsPresent;
+    return noErrorsPresent && allFieldsAreFilled;
   };
 
   return (

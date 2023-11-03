@@ -1,25 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import { useDispatch } from "react-redux";
-import { getDrivers } from "../../redux/actions/actions";
+import { getDrivers, getTeams } from "../../redux/actions/actions";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Filter from "../../components/Filter/Filter";
 import style from "../Home/home.module.css";
 import TeamFilter from "../../components/TeamFilter/TeamFilter";
+import FilterDb from "../../components/FilterDb/FilterDb";
+
 const Home = () => {
   const dispatch = useDispatch();
-  const [showComponent, setShowComponent] = useState(false);
+
   useEffect(() => {
     dispatch(getDrivers());
+    dispatch(getTeams());
   }, []);
-  const handleShowModal = () => {
-    setShowComponent(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowComponent(false);
-  };
 
   return (
     <>
@@ -27,9 +23,8 @@ const Home = () => {
         <div className={style.filters}>
           <Filter />
           <SearchBar />
-          <button onClick={handleShowModal}>Mostrar Componente</button>
-
-          {showComponent && <TeamFilter handleCloseModal={handleCloseModal} />}
+          <TeamFilter />
+          <FilterDb />
         </div>
         <CardsContainer />
       </div>

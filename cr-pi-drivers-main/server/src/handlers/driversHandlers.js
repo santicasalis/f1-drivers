@@ -16,10 +16,9 @@ const getDriversHandler = async (req, res) => {
 
 const getDriverHandler = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
 
   const source = isNaN(id) ? "bdd" : "api";
-  console.log(source);
+
   try {
     const driver = await getDriverById(id, source);
     res.status(200).json(driver);

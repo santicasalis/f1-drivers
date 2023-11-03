@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
 import style from "../CardsContainer/cardsContainer.module.css";
-import Search from "../SearchBar/SearchBar";
 
 const CardsContainer = () => {
   const drivers = useSelector((state) => state.drivers);

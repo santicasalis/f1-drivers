@@ -1,0 +1,24 @@
+.detailContainer {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detailContainerData {
+  display: flex;
+  width: 80%;
+  align-items: center;
+}
+.detailContainerData img {
+  width: 330px;
+  height: 493px;
+}
+
+.detailData {
+  display: flex;
+  flex-direction: column;
+}
+.detailData div {
+  margin: 1rem 2rem;
+}

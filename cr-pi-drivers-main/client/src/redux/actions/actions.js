@@ -5,7 +5,9 @@ import {
   ORDER_DRIVER,
   GET_DRIVERS_NAME,
   GET_TEAMS,
+  FILTER_TEAM,
   GET_CREATED,
+  //GET_CREATED,
 } from "../actions/actionTypes";
 
 export const getDrivers = () => {
@@ -51,5 +53,21 @@ export const getTeams = () => {
   };
 };
 export const getDriverCreated = (createDb) => {
-  return { type: GET_CREATED, payload: createDb };
+  return async function (dispatch) {
+    try {
+      dispatch({ type: GET_CREATED, payload: createDb });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getFilterTeam = (filterTeam) => {
+  return async function (dispatch) {
+    try {
+      dispatch({ type: FILTER_TEAM, payload: filterTeam });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 };

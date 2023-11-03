@@ -1,46 +1,34 @@
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTeams } from "../../redux/actions/actions";
-import style from "../TeamFilter/teamFilter.module.css";
+import { getDrivers, getFilterTeam } from "../../redux/actions/actions";
+//import style from "../TeamFilter/teamFilter.module.css";
 
 // eslint-disable-next-line react/prop-types
-const TeamFilter = ({ handleCloseModal }) => {
+const TeamFilter = () => {
   const dispatch = useDispatch();
-  const [selectedTeams, setSelectedTeams] = useState([]);
 
-  const handleCheckboxChange = (event) => {
-    const value = event.target.value;
-    if (selectedTeams.includes(value)) {
-      setSelectedTeams(selectedTeams.filter((team) => team !== value));
-    } else {
-      setSelectedTeams([...selectedTeams, value]);
-    }
+  const teams = useSelector((state) => state.teams);
+
+  const filterTeam = (event) => {
+    dispatch(getFilterTeam(event.target.value));
+  };
+  const reset = () => {
+    dispatch(getDrivers());
   };
 
-  useEffect(() => {
-    dispatch(getTeams());
-  }, []);
-  const teams = useSelector((state) => state.teams);
-  console.log(selectedTeams);
   return (
     <>
-      <div className={style.modal}>
-        <label>Choose Teams to Filter:</label>
-        <form className={style.modalContent}>
+      <div>
+        <select name="filterByTeam" onChange={filterTeam}>
           {teams.map((team) => (
-            <div key={team.id}>
-              <input
-                type="checkbox"
-                name="teams"
-                value={team.name}
-                checked={selectedTeams.includes(team.name)}
-                onChange={handleCheckboxChange}
-              />
-              <label>{team.name}</label>
-            </div>
+            <option key={team.id} value={team.name}>
+              {team.name}
+            </option>
           ))}
-          <button onClick={handleCloseModal}>X</button>
-        </form>
+        </select>
+        <div>
+          <button onClick={reset}>Restart</button>
+        </div>
       </div>
     </>
   );

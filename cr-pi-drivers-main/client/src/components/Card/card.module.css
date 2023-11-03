@@ -1,6 +1,11 @@
 .cardContainer {
   width: 350px;
   height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid red;
+  margin: 2rem 1rem;
 }
 
 .cardImg {
@@ -12,4 +17,16 @@
 }
 .link {
   text-decoration: none;
+}
+.teamList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+
+.teamLi {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
 }
