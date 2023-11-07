@@ -16,9 +16,6 @@ const TeamFilter = () => {
     console.log(teams);
     dispatch(getFilterTeam(event.target.value));
   };
-  // const reset = () => {
-  //   dispatch(getDrivers());
-  // };
 
   return (
     <>
