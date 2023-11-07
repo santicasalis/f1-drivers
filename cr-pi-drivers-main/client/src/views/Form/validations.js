@@ -56,9 +56,9 @@ export function validateInput(form) {
     if (!form.teams) {
       errors.teams = "the teams cannot be empty";
     }
-    if (!/^[a-zA-Z\s]+$/u.test(form.teams)) {
-      errors.teams = " The teams cannot have special characters or numbers";
-    }
+    // if (!/^[a-zA-Z\s]+$/u.test(form.teams)) {
+    //   errors.teams = " The teams cannot have special characters or numbers";
+    // }
   }
   if (form.dob.length >= 1) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(form.dob)) {

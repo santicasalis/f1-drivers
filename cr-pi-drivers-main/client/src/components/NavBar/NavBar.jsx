@@ -3,6 +3,7 @@ import LinkButton from "../LinkButton/LinkButton";
 import Logo from "../Logo/logo";
 
 import style from "../NavBar/navBar.module.css";
+
 const NavBar = () => {
   return (
     <>
@@ -11,7 +12,7 @@ const NavBar = () => {
           <Logo />
         </Link>
         <LinkButton to="/home" text="Home" />
-        <LinkButton to="/create" text="Create Driver" />
+        <LinkButton to="/create" text="Create" />
       </div>
     </>
   );

@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import style from "../Card/card.module.css";
 /* eslint-disable react/prop-types */
 const Card = (props) => {
-  const teamsArray = props.teams.split(",");
+  const teamsArray = props.teams?.split(",");
+
   return (
     <Link className={style.link} to={`/detail/${props.id}`}>
       <div className={style.cardContainer}>
@@ -13,7 +14,7 @@ const Card = (props) => {
         <img className={style.cardImg} src={props.image} alt={props.name} />
         <div className={style.teamList}>
           <ul className={style.teamList}>
-            {teamsArray.map((team, index) => (
+            {teamsArray?.map((team, index) => (
               <li className={style.teamLi} key={index}>
                 {team}
               </li>

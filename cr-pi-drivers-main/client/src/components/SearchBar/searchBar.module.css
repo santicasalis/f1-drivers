@@ -1,0 +1,22 @@
+.searchBarContainer input {
+  padding: 0.5rem 2rem;
+  background-color: #f15e64;
+}
+.searchBarContainer button {
+  padding: 0.5rem 0.5rem;
+  background-color: #eb3941;
+  border-radius: 50px;
+  margin-left: 1rem;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  width: 90px;
+  height: 40px;
+  border: 2px solid #fff;
+}
+
+.searchBarContainer input::placeholder {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}

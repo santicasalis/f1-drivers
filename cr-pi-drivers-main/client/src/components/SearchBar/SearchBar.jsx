@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { getDriversName, getDrivers } from "../../redux/actions/actions";
 import { useState } from "react";
-
+import style from "../SearchBar/searchBar.module.css";
 const Search = () => {
   const [search, setSearch] = useState("");
   // eslint-disable-next-line no-unused-vars
@@ -15,15 +15,17 @@ const Search = () => {
 
   const handleSearch = () => {
     if (!search) {
-      return Promise.reject("El campo de búsqueda está vacío.");
+      return alert("the search field is empty");
     } else {
       setIsSearch(true);
       dispatch(getDriversName(search))
         .then((response) => {
           setSearchResults(response?.payload);
+          setSearch("");
         })
-        .catch((error) => {
-          console.error(error);
+        .catch(() => {
+          alert("the driver is not found");
+          setSearch("");
         });
     }
   };
@@ -36,7 +38,7 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className={style.searchBarContainer}>
       <input
         type="search"
         onChange={handleChange}

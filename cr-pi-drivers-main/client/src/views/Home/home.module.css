@@ -1,9 +1,6 @@
 .homeContainer {
-  margin-top: 80px;
-}
-
-.filters {
-  display: flex;
-  height: 5vh;
-  justify-content: center;
+  margin-top: 75px;
+  background-image: url(../../assets/W14.jpg);
+  background-size: cover;
+  background-position: center center;
 }

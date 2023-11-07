@@ -1,7 +1,7 @@
 .cardsContainer {
   display: flex;
   flex-wrap: wrap;
-
+  margin-top: 50px;
   justify-content: center;
 }
 
@@ -11,5 +11,22 @@
   justify-content: center;
 }
 .pagination div {
-  margin: 0.5rem 2rem;
+  padding: 0.5rem 2rem;
+  color: white;
+  margin-bottom: 3rem;
+  font-size: 15px;
+  font-weight: 500;
+}
+.pagination button {
+  padding: 0.5rem 0.5rem;
+  background-color: #eb3941;
+  border-radius: 50px;
+  margin-left: 1rem;
+  margin-bottom: 3rem;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  width: 90px;
+  height: 40px;
+  border: 2px solid #fff;
 }

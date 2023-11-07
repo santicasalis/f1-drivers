@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { orderDrivers } from "../../redux/actions/actions";
+import style from "../TeamFilter/teamFilter.module.css";
 
 const Filter = () => {
   const dispacth = useDispatch();
@@ -10,7 +11,7 @@ const Filter = () => {
 
   return (
     <>
-      <div>
+      <div className={style.teamFilterContainer}>
         <select onChange={handleOrder}>
           <option value="A">Order</option>
           <option value="A">INCREASING</option>

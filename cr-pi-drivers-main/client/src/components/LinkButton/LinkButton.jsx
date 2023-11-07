@@ -4,7 +4,7 @@ import style from "../LinkButton/link.module.css";
 const LinkButton = ({ to, text }) => {
   return (
     <Link to={to}>
-      <button className={style.linkButton}>{text}</button>
+      <button className={`${style.linkButton} ${style.bn28}`}>{text}</button>
     </Link>
   );
 };

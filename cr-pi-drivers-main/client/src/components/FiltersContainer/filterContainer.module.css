@@ -1,0 +1,16 @@
+.FiltersContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #1a1a1a;
+  align-items: center;
+  height: 15vh;
+  width: 100%;
+}
+
+.orderContainer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #1a1a1a;
+  width: 100%;
+}
