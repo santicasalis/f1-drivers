@@ -17,7 +17,7 @@ const getAllDrivers = async (req, res) => {
           "https://media.formula1.com/image/upload/f_auto/q_auto/v1699290912/fom-website/2023/Brazil/Sainz%20Brazil%202023.jpg.transform/6col/image.jpg",
         nationality: driver.nationality,
         dob: driver.dob,
-        teams: driver.teams,
+        teams: driver.teams?.split(","),
       };
     });
 
@@ -33,7 +33,7 @@ const getAllDrivers = async (req, res) => {
       dob: driver.dob,
       teams: driver.Teams?.map((t) => t.name).join(","),
     }));
-    console.log(driversDb);
+
     return [...dataDrivers, ...driversDbOrdered];
   } catch (error) {
     console.error(error);

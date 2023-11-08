@@ -7,7 +7,7 @@ import {
   GET_TEAMS,
   FILTER_TEAM,
   GET_CREATED,
-  //GET_CREATED,
+  CLEAN_DETAIL,
 } from "../actions/actionTypes";
 
 export const getDrivers = () => {
@@ -28,6 +28,9 @@ export const getDriver = (id) => {
     dispatch({ type: GET_DRIVER, payload: driver });
   };
 };
+export const cleanDriverDetail = () => {
+  return { type: CLEAN_DETAIL, payload: [] };
+};
 
 export const orderDrivers = (order) => {
   return { type: ORDER_DRIVER, payload: order };
@@ -35,13 +38,17 @@ export const orderDrivers = (order) => {
 
 export const getDriversName = (search) => {
   return async function (dispatch) {
-    const apiData = await axios.get(
-      `http://localhost:3001/drivers?name=${search}`
-    );
+    try {
+      const apiData = await axios.get(
+        `http://localhost:3001/drivers?name=${search}`
+      );
 
-    const drivers = apiData.data;
+      const drivers = apiData.data;
 
-    dispatch({ type: GET_DRIVERS_NAME, payload: drivers });
+      dispatch({ type: GET_DRIVERS_NAME, payload: drivers });
+    } catch (error) {
+      alert(error.response.data.error);
+    }
   };
 };
 

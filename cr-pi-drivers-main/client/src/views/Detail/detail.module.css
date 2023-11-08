@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   background-image: url(../../assets/W14.jpg);
-  background-size: cover; /* Ajusta el tamaño de la imagen de fondo según el contenedor */
+  background-size: cover;
   background-position: center center;
   height: 100vh;
 }
@@ -25,11 +25,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente negro */
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   height: 100%;
 }
 .detailData div {
-  margin: 1rem 2rem;
+  margin: 0.5rem 2rem;
+  font-family: "Playpen Sans", sans-serif;
+}
+
+.detailContainer h2 {
+  font-family: "Titillium Web", sans-serif;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: xx-large;
+  letter-spacing: 2px;
+}
+.teamList {
+  display: flex;
+
+  justify-content: center;
+
+  list-style: none;
+}
+.teamList li {
+  margin: 1rem;
+}
+
+.infoExtra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -4,10 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* {#eb3941,
-  #b5484c,
-  #e14e53c0,
-  #cf4a51} */
   margin: 2rem 1rem;
   background-image: linear-gradient(
     to right,
@@ -16,7 +12,7 @@
     #da787b66,
     #d17378
   );
-  /* box-shadow: 0 5px 15px rgba(242, 97, 103, 0.4); */
+
   border-radius: 50px;
   &:hover {
     transform: scale(1.1);
@@ -41,6 +37,9 @@
 }
 
 .teamLi {
+  font-family: "Playpen Sans", sans-serif;
+  color: aliceblue;
+  font-weight: bold;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 10px;

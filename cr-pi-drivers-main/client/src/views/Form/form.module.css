@@ -1,16 +1,10 @@
 .formViewContainer {
   margin-top: 75px;
   background-image: url(../../assets/W14.jpg);
-  background-size: cover; /* Ajusta el tamaño de la imagen de fondo según el contenedor */
-  background-position: center center;
+  background-size: cover;
+  background-position: center;
 }
-/* 
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  border-radius: 1px solid red;
-  width: 250px;
-} */
+
 .formContainer {
   max-width: 400px;
   margin: 0 auto;
@@ -22,46 +16,93 @@
     #da787b66,
     #d17378
   );
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #f5f1f1;
+  border-radius: 50px;
 }
 
 .formContainer label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-family: "Tilt Neon", sans-serif;
+  letter-spacing: 2px;
   font-weight: bold;
+  font-size: medium;
+  color: white;
 }
 
 .formContainer input,
-.formContainer textarea {
+.formContainer textarea,
+.formContainer select {
   width: 100%;
   padding: 10px;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  border-radius: 50px;
+  font-weight: bold;
 }
 
 .formContainer .errorMessage {
-  color: red;
-  font-size: 12px;
+  color: black;
+  background-color: #f5f1f15a;
+  font-size: large;
+  font-weight: bold;
   margin-top: 5px;
 }
 
-.formContainer button {
+.submitButton {
   display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  margin: 0 auto;
+  padding: 1rem 7rem;
+  background-image: linear-gradient(
+    to right,
+    #eb3941,
+    #f15e64,
+    #e14e53,
+    #e2373f
+  );
   color: #fff;
+  font-weight: bold;
+  font-size: medium;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
 }
 
-.formContainer button:disabled {
+.submitButton:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 .formContainer div {
   margin: 0.5rem;
+}
+
+.selectedTeams {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(47, 79, 79, 0.302);
+}
+
+.selectedTeams div {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-family: "Tilt Neon", sans-serif;
+  font-weight: bold;
+}
+
+.deleteButton {
+  background-image: linear-gradient(
+    to right,
+    #eb3941,
+    #e03237,
+    #e14e53,
+    #e2373f
+  );
+  color: white;
+  padding: 5px 7px;
+  margin-top: 4px;
 }

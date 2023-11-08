@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { validateInput } from "./validations";
 import style from "../Form/form.module.css";
 import { getTeams } from "../../redux/actions/actions";
+
 const Form = () => {
   const [form, setForm] = useState({
     lastname: "",
@@ -20,6 +21,7 @@ const Form = () => {
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
+
     if (property === "teams") {
       setErrors(validateInput({ ...form, [property]: value }));
       setForm({ ...form, [property]: [...form.teams, value] });
@@ -51,20 +53,21 @@ const Form = () => {
       .catch((error) => console.log(error));
   };
   const isFormValid = () => {
-    let allFieldsAreFilled;
+    let formValid = false;
+
     if (
-      form.name !== "" &&
-      form.lastname !== "" &&
-      form.nationality !== "" &&
-      form.dob !== "" &&
-      form.teams.length !== 0 &&
-      form.description !== ""
+      form.name === "" ||
+      form.lastname === "" ||
+      form.nationality === "" ||
+      form.dob === "" ||
+      !form.teams ||
+      form.description === "" ||
+      Object.keys(errors).length !== 0
     ) {
-      allFieldsAreFilled = true;
-      return allFieldsAreFilled;
+      formValid = true;
     }
-    const noErrorsPresent = Object.values(errors).every((error) => !error);
-    return noErrorsPresent && allFieldsAreFilled;
+
+    return !formValid;
   };
 
   const dispatch = useDispatch();
@@ -137,7 +140,7 @@ const Form = () => {
             <div className={style.errorMessage}>{errors?.teams}</div>
             <div className={style.selectedTeams}>
               {form.teams?.map((team, index) => (
-                <span key={index}>
+                <div key={index}>
                   {team}{" "}
                   <button
                     type="button"
@@ -146,7 +149,7 @@ const Form = () => {
                   >
                     X
                   </button>
-                </span>
+                </div>
               ))}
             </div>
           </div>
@@ -170,7 +173,11 @@ const Form = () => {
             <div className={style.errorMessage}>{errors?.description}</div>
           </div>
 
-          <button type="submit" disabled={!isFormValid()}>
+          <button
+            className={style.submitButton}
+            type="submit"
+            disabled={!isFormValid()}
+          >
             Submit
           </button>
         </form>

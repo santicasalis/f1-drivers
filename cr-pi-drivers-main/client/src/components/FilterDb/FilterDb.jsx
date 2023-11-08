@@ -13,6 +13,7 @@ const FilterDb = () => {
         <select onChange={handleFilter}>
           <option value="ALL">ALL</option>
           <option value="CREATED">CREATED</option>
+          <option value="API">API</option>
         </select>
       </div>
     </>

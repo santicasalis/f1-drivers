@@ -5,7 +5,7 @@ import style from "../SearchBar/searchBar.module.css";
 const Search = () => {
   const [search, setSearch] = useState("");
   // eslint-disable-next-line no-unused-vars
-  const [searchResults, setSearchResults] = useState([]);
+
   const [isSearch, setIsSearch] = useState(false);
   const dispatch = useDispatch();
 
@@ -19,8 +19,7 @@ const Search = () => {
     } else {
       setIsSearch(true);
       dispatch(getDriversName(search))
-        .then((response) => {
-          setSearchResults(response?.payload);
+        .then(() => {
           setSearch("");
         })
         .catch(() => {
@@ -32,7 +31,7 @@ const Search = () => {
 
   const handleReset = () => {
     setSearch("");
-    setSearchResults([]);
+
     setIsSearch(false);
     dispatch(getDrivers());
   };

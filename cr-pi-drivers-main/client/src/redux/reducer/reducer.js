@@ -7,7 +7,7 @@ import {
   GET_TEAMS,
   FILTER_TEAM,
   GET_CREATED,
-  //GET_CREATED,
+  CLEAN_DETAIL,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -28,6 +28,12 @@ const rootReducer = (state = initialState, action) => {
       };
     case GET_DRIVER:
       return { ...state, driver: action.payload };
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        driver: action.payload,
+      };
+
     case GET_TEAMS:
       return { ...state, teams: action.payload };
 
@@ -62,8 +68,6 @@ const rootReducer = (state = initialState, action) => {
     case GET_DRIVERS_NAME:
       return { ...state, drivers: action.payload };
     case GET_CREATED:
-      let allDriverss;
-      let filterbyDb;
       if (action.payload === "ALL") {
         return {
           ...state,
@@ -71,14 +75,25 @@ const rootReducer = (state = initialState, action) => {
         };
       }
       if (action.payload === "CREATED") {
-        (allDriverss = [...state.driversBackUp]),
-          (filterbyDb = allDriverss.filter((create) => {
-            return create.id && create.id.length > 4;
-          }));
+        return {
+          ...state,
+          drivers: [...state.driversBackUp].filter((driver) =>
+            isNaN(driver.id)
+          ),
+        };
       }
+      if (action.payload === "API") {
+        return {
+          ...state,
+          drivers: [...state.driversBackUp].filter(
+            (driver) => !isNaN(driver.id)
+          ),
+        };
+      }
+
       return {
         ...state,
-        drivers: filterbyDb,
+        ...state.drivers,
       };
 
     case FILTER_TEAM:
