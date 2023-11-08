@@ -13,10 +13,12 @@
   display: flex;
   width: 90%;
   align-items: center;
+  justify-content: center;
 }
 .detailContainerData img {
   width: 330px;
   height: 493px;
+  object-fit: cover;
 }
 
 .detailData {

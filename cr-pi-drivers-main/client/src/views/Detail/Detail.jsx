@@ -8,28 +8,41 @@ import style from "../Detail/detail.module.css";
 const Detail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  const driver = useSelector((state) => state.driver);
   useEffect(() => {
     dispatch(getDriver(id));
   }, [id]);
-  const driver = useSelector((state) => state.driver);
 
+  console.log(driver.teams);
   return (
     <>
       <div className={style.detailContainer}>
-        <h2>
-          {driver.name} {driver.lastname}
-        </h2>
-        <div className={style.detailContainerData}>
-          <img src={driver.image} alt={driver.name} />
-          <div className={style.detailData}>
-            <div>Nacionality: {driver.nationality}</div>
-            <div> Day of Birth : {driver.dob}</div>
-            <div>Teams : {driver.teams}</div>
+        {" "}
+        <>
+          <h2>
+            {driver.name} {driver.lastname}
+          </h2>
+          <div className={style.detailContainerData}>
+            <img src={driver.image} alt={driver.name} />
+            <div className={style.detailData}>
+              <div>Nacionality: {driver.nationality}</div>
+              <div> Day of Birth : {driver.dob}</div>
+              <div>
+                Teams :
+                <ul>
+                  {driver.Teams?.map((team) => (
+                    <li key={team.id}>{team.name}</li>
+                  ))}
+                  {driver.teams?.split(",").map((team) => (
+                    <li key={team}>{team}</li>
+                  ))}
+                </ul>
+              </div>
 
-            <div> Description: {driver.description}</div>
+              <div> Description: {driver.description}</div>
+            </div>
           </div>
-        </div>
+        </>
       </div>
     </>
   );

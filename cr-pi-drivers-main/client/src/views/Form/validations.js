@@ -35,15 +35,12 @@ export function validateInput(form) {
   }
 
   if (form.image.length >= 1) {
-    if (!form.image) {
-      errors.image = "the image cannot be empty";
-    }
     if (
-      !/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$|www\.[^\s/$.?#].[^\s]*\.com$/.test(
+      !/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$|www\.[^\s/$.?#].[^\s]*\.com$\.(jpg|jpeg)$/.test(
         form.image
       )
     ) {
-      errors.image = "the image must be a url";
+      errors.image = "must be a url ending in .jpg  or .jpeg";
     }
   }
 
@@ -52,17 +49,17 @@ export function validateInput(form) {
       errors.description = "the description must be longer than 20 characters";
     }
   }
-  if (form.teams.length >= 1) {
-    if (!form.teams) {
-      errors.teams = "the teams cannot be empty";
-    }
-    // if (!/^[a-zA-Z\s]+$/u.test(form.teams)) {
-    //   errors.teams = " The teams cannot have special characters or numbers";
-    // }
+  if (!form.teams.length) {
+    errors.teams = "you must select at least one team";
   }
+
   if (form.dob.length >= 1) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(form.dob)) {
-      errors.dob = "Fecha invalida YYYY-MM-DD";
+    if (
+      !/^(?:202[0-2]|20[0-1]\d|19\d\d)-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(
+        form.dob
+      )
+    ) {
+      errors.dob = "Incorrect date format: YYYY-MM-DD";
     }
   }
   return errors;

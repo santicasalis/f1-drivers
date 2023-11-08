@@ -9,7 +9,7 @@ const Form = () => {
     lastname: "",
     nationality: "",
     dob: "",
-    teams: "",
+    teams: [],
     image: "",
     description: "",
     name: "",
@@ -21,6 +21,7 @@ const Form = () => {
     const property = event.target.name;
     const value = event.target.value;
     if (property === "teams") {
+      setErrors(validateInput({ ...form, [property]: value }));
       setForm({ ...form, [property]: [...form.teams, value] });
     } else {
       setErrors(validateInput({ ...form, [property]: value }));
@@ -30,7 +31,7 @@ const Form = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(form);
+
     axios
       .post("http://localhost:3001/drivers", form)
 
@@ -42,7 +43,7 @@ const Form = () => {
           lastname: "",
           nationality: "",
           dob: "",
-          teams: "",
+          teams: [],
           image: "",
           description: "",
         })
@@ -50,9 +51,18 @@ const Form = () => {
       .catch((error) => console.log(error));
   };
   const isFormValid = () => {
-    const allFieldsAreFilled = Object.values(form).every(
-      (field) => field !== ""
-    );
+    let allFieldsAreFilled;
+    if (
+      form.name !== "" &&
+      form.lastname !== "" &&
+      form.nationality !== "" &&
+      form.dob !== "" &&
+      form.teams.length !== 0 &&
+      form.description !== ""
+    ) {
+      allFieldsAreFilled = true;
+      return allFieldsAreFilled;
+    }
     const noErrorsPresent = Object.values(errors).every((error) => !error);
     return noErrorsPresent && allFieldsAreFilled;
   };
@@ -64,10 +74,10 @@ const Form = () => {
     dispatch(getTeams());
   }, []);
 
-  // const deleteTeam = (teamName) => {
-  //   const updatedTeams = form.teams.filter((team) => team !== teamName);
-  //   setForm({ ...form, teams: updatedTeams });
-  // };
+  const deleteTeam = (teamName) => {
+    const updatedTeams = form.teams.filter((team) => team !== teamName);
+    setForm({ ...form, teams: updatedTeams });
+  };
   return (
     <>
       <div className={style.formViewContainer}>
@@ -123,14 +133,9 @@ const Form = () => {
                 </option>
               ))}
             </select>
-            {/* <input
-              type="text"
-              value={form.teams}
-              onChange={changeHandler}
-              name="teams"
-            /> */}
+
             <div className={style.errorMessage}>{errors?.teams}</div>
-            {/* <div className={style.selectedTeams}>
+            <div className={style.selectedTeams}>
               {form.teams?.map((team, index) => (
                 <span key={index}>
                   {team}{" "}
@@ -143,7 +148,7 @@ const Form = () => {
                   </button>
                 </span>
               ))}
-            </div> */}
+            </div>
           </div>
           <div>
             <label htmlFor="image">Image</label>

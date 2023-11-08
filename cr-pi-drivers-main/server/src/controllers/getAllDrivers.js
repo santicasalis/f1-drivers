@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Driver } = require("../db");
+const { Driver, Team } = require("../db");
 
 const getAllDrivers = async (req, res) => {
   try {
@@ -14,15 +14,15 @@ const getAllDrivers = async (req, res) => {
         description: driver.description,
         image:
           driver.image.url ||
-          "https://www.ford.com.ar/content/dam/Ford/website-assets/latam/ar/home/showroom/fds/far-showroom-mustang.jpg",
+          "https://media.formula1.com/image/upload/f_auto/q_auto/v1699290912/fom-website/2023/Brazil/Sainz%20Brazil%202023.jpg.transform/6col/image.jpg",
         nationality: driver.nationality,
         dob: driver.dob,
         teams: driver.teams,
       };
     });
 
-    const driversDb = await Driver.findAll();
-    console.log(driversDb);
+    const driversDb = await Driver.findAll({ include: [{ model: Team }] });
+
     const driversDbOrdered = driversDb.map((driver) => ({
       id: driver.id,
       name: driver.name,
@@ -31,9 +31,9 @@ const getAllDrivers = async (req, res) => {
       image: driver.image,
       nationality: driver.nationality,
       dob: driver.dob,
-      teams: driver.teams,
+      teams: driver.Teams?.map((t) => t.name).join(","),
     }));
-
+    console.log(driversDb);
     return [...dataDrivers, ...driversDbOrdered];
   } catch (error) {
     console.error(error);

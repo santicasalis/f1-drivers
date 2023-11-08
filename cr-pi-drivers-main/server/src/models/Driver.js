@@ -29,6 +29,8 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         isUrl: true,
         allowNull: false,
+        defaultValue:
+          "https://media.formula1.com/image/upload/v1699215893/trackside-images/2023/F1_Grand_Prix_of_Brazil/1776826508.jpg.transform/3col/image.jpg",
       },
       nationality: {
         type: DataTypes.STRING,

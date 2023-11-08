@@ -41,6 +41,7 @@ const CardsContainer = () => {
     const lastPage = Math.floor(drivers.length / 9);
     setCurrentPage(lastPage);
   };
+  console.log(filteredDrivers);
   return (
     <div>
       <div className={style.cardsContainer}>

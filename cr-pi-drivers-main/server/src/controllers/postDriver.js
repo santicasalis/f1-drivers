@@ -10,8 +10,11 @@ const postDriver = async (
   teams
 ) => {
   try {
-    // Primero, intenta encontrar el equipo existente o crearlo si no existe
-    const [teamName, created] = await Team.findOrCreate({
+    if (!image) {
+      image =
+        "https://media.formula1.com/image/upload/v1699215893/trackside-images/2023/F1_Grand_Prix_of_Brazil/1776826508.jpg.transform/3col/image.jpg";
+    }
+    const teamsDb = await Team.findAll({
       where: { name: teams },
     });
 
@@ -22,9 +25,9 @@ const postDriver = async (
       image,
       nationality,
       dob,
-      teams,
-      TeamId: teamName.id,
     });
+
+    await newDriver.addTeams(teamsDb);
 
     return newDriver;
   } catch (error) {
