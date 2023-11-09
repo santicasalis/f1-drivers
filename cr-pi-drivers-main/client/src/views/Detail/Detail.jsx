@@ -48,7 +48,7 @@ const Detail = () => {
               </div>
 
               <div className={style.infoExtra}>
-                <div> Description: </div>
+                <div> Description:</div>
                 <div>{driver.description}</div>
               </div>
             </div>

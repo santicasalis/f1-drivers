@@ -7,7 +7,8 @@ import style from "../CardsContainer/cardsContainer.module.css";
 
 const CardsContainer = () => {
   const drivers = useSelector((state) => state.drivers);
-
+  console.log(drivers);
+  // const currentPage = useSelector((state) => state.page);
   const cardsPerPage = 9;
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -18,7 +19,7 @@ const CardsContainer = () => {
     const startIndex = currentPage * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
     const slicedDrivers = drivers.slice(startIndex, endIndex);
-
+    console.log(slicedDrivers);
     setFilteredDrivers(slicedDrivers);
   }, [currentPage, drivers, cardsPerPage]);
 
@@ -41,6 +42,7 @@ const CardsContainer = () => {
     const lastPage = Math.floor(drivers.length / 9);
     setCurrentPage(lastPage);
   };
+  console.log(filteredDrivers);
 
   return (
     <div>

@@ -1,3 +1,4 @@
+const { Sequelize } = require("sequelize");
 const { Driver, Team } = require("../db");
 
 const postDriver = async (
@@ -30,6 +31,8 @@ const postDriver = async (
     await newDriver.addTeams(teamsDb);
 
     return newDriver;
+
+    //return newDriver;
   } catch (error) {
     throw error;
   }

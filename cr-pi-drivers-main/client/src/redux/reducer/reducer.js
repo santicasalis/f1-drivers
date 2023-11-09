@@ -8,6 +8,7 @@ import {
   FILTER_TEAM,
   GET_CREATED,
   CLEAN_DETAIL,
+  CURRENT_PAGE,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   driversBackUp: [],
   driversFiltered: [],
   teams: [],
+  page: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -105,6 +107,9 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         drivers: filteredDrivers,
       };
+
+    case CURRENT_PAGE:
+      return { ...state, page: action.payload };
     default:
       return { ...state };
   }

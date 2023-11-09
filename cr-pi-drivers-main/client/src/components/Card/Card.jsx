@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import style from "../Card/card.module.css";
 /* eslint-disable react/prop-types */
 const Card = (props) => {
+  console.log(props.teams);
   return (
     <Link className={style.link} to={`/detail/${props.id}`}>
       <div className={style.cardContainer}>

@@ -22,7 +22,7 @@ const getDriverName = async (name) => {
       "https://www.ford.com.ar/content/dam/Ford/website-assets/latam/ar/home/showroom/fds/far-showroom-mustang.jpg",
     nationality: driver.nationality,
     birthdate: driver.dob,
-    teams: driver.teams,
+    teams: driver.teams?.split(","),
   }));
 
   const dbDriver = await Driver.findAll({
@@ -44,7 +44,7 @@ const getDriverName = async (name) => {
     image: driver.image,
     nationality: driver.nationality,
     birthdate: driver.birthdate,
-    teams: driver.Teams?.map((t) => t.name).join(","),
+    teams: driver.Teams?.map((t) => t.name),
   }));
 
   console.log(dbDriverOrdered);
