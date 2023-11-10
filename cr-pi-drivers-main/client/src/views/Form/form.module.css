@@ -43,18 +43,22 @@
 }
 
 .formContainer .errorMessage {
-  color: black;
-  background-color: #f5f1f15a;
+  color: red;
+  background-color: black;
   font-size: large;
   font-weight: bold;
   margin-top: 5px;
+}
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .submitButton {
   display: block;
   margin: 0 auto;
   padding: 1rem 7rem;
-  background-image: linear-gradient(
+  background-color: linear-gradient(
     to right,
     #eb3941,
     #f15e64,

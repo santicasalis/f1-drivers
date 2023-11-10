@@ -19,7 +19,7 @@ const CardsContainer = () => {
     const startIndex = currentPage * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
     const slicedDrivers = drivers.slice(startIndex, endIndex);
-    console.log(slicedDrivers);
+
     setFilteredDrivers(slicedDrivers);
   }, [currentPage, drivers, cardsPerPage]);
 
@@ -42,7 +42,6 @@ const CardsContainer = () => {
     const lastPage = Math.floor(drivers.length / 9);
     setCurrentPage(lastPage);
   };
-  console.log(filteredDrivers);
 
   return (
     <div>

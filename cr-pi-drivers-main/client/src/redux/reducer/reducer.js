@@ -9,6 +9,7 @@ import {
   GET_CREATED,
   CLEAN_DETAIL,
   CURRENT_PAGE,
+  RESET,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -70,6 +71,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_DRIVERS_NAME:
       return { ...state, drivers: action.payload };
     case GET_CREATED:
+      // let driversCreate;
       if (action.payload === "ALL") {
         return {
           ...state,
@@ -79,19 +81,25 @@ const rootReducer = (state = initialState, action) => {
       if (action.payload === "CREATED") {
         return {
           ...state,
-          drivers: [...state.driversBackUp].filter((driver) =>
-            isNaN(driver.id)
-          ),
+          drivers: [...state.drivers].filter((driver) => isNaN(driver.id)),
         };
       }
       if (action.payload === "API") {
         return {
           ...state,
-          drivers: [...state.driversBackUp].filter(
-            (driver) => !isNaN(driver.id)
-          ),
+          drivers: [...state.drivers].filter((driver) => !isNaN(driver.id)),
         };
       }
+
+      // if (action.payload === "CREATED") {
+      //   driversCreate = [...state.drivers].filter((driver) => isNaN(driver.id));
+      // }
+
+      // if (action.payload === "API") {
+      //   driversCreate = [...state.drivers].filter(
+      //     (driver) => !isNaN(driver.id)
+      //   );
+      // }
 
       return {
         ...state,
@@ -99,13 +107,20 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER_TEAM:
-      const allDrivers = [...state.driversBackUp];
-      const filteredDrivers = allDrivers.filter((team) => {
-        return team.teams && team.teams.includes(action.payload);
-      });
+      // const allDrivers = [...state.drivers];
+      // const filteredDrivers = allDrivers.filter((team) => {
+      //   return team.teams && team.teams.includes(action.payload);
+      // });
       return {
         ...state,
-        drivers: filteredDrivers,
+        drivers: [...state.drivers].filter(
+          (team) => team.teams && team.teams.includes(action.payload)
+        ),
+      };
+    case RESET:
+      return {
+        ...state,
+        drivers: [...state.driversBackUp],
       };
 
     case CURRENT_PAGE:

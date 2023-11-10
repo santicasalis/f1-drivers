@@ -9,6 +9,7 @@ import {
   GET_CREATED,
   CLEAN_DETAIL,
   CURRENT_PAGE,
+  RESET,
 } from "../actions/actionTypes";
 
 export const getDrivers = () => {
@@ -84,5 +85,15 @@ export const putCurrentPage = (page) => {
   return {
     type: CURRENT_PAGE,
     payload: page,
+  };
+};
+
+export const resetDrivers = () => {
+  return async function (dispatch) {
+    try {
+      dispatch({ type: RESET });
+    } catch (error) {
+      alert(error);
+    }
   };
 };

@@ -13,7 +13,6 @@ const TeamFilter = () => {
     dispatch(getTeams());
   }, []);
   const filterTeam = (event) => {
-    console.log(teams);
     dispatch(getFilterTeam(event.target.value));
   };
 
@@ -27,9 +26,6 @@ const TeamFilter = () => {
             </option>
           ))}
         </select>
-        {/* <div>
-          <button onClick={reset}>Restart</button>
-        </div> */}
       </div>
     </>
   );
