@@ -49,16 +49,12 @@
   font-weight: bold;
   margin-top: 5px;
 }
-.submitButton:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
 
 .submitButton {
   display: block;
   margin: 0 auto;
   padding: 1rem 7rem;
-  background-color: linear-gradient(
+  background-image: linear-gradient(
     to right,
     #eb3941,
     #f15e64,
@@ -72,11 +68,11 @@
   border-radius: 50px;
   cursor: pointer;
 }
-
 .submitButton:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
 .formContainer div {
   margin: 0.5rem;
 }

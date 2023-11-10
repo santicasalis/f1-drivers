@@ -31,7 +31,7 @@ const createDriverHandler = async (req, res) => {
   try {
     const { name, lastname, description, image, nationality, dob, teams } =
       req.body;
-
+    if (!dob) return res.status(400).json({ error: "la fecha es requerida" });
     const newDriver = await postDriver(
       name,
       lastname,

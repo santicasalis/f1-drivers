@@ -33,7 +33,7 @@ const getAllDrivers = async (req, res) => {
       dob: driver.dob,
       teams: driver.Teams?.map((t) => t.name),
     }));
-    console.log(driversDb);
+
     return [...dataDrivers, ...driversDbOrdered];
   } catch (error) {
     console.error(error);

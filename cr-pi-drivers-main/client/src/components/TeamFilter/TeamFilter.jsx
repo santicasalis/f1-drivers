@@ -1,9 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { getFilterTeam, getTeams } from "../../redux/actions/actions";
-import style from "../TeamFilter/teamFilter.module.css";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { getFilterTeam, getTeams } from "../../redux/actions/actions";
+
+import style from "../TeamFilter/teamFilter.module.css";
 // eslint-disable-next-line react/prop-types
+
 const TeamFilter = () => {
   const dispatch = useDispatch();
 

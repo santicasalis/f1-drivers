@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux";
+
 import { resetDrivers } from "../../redux/actions/actions";
+
 import style from "../SearchBar/searchBar.module.css";
 
 export const Reset = () => {

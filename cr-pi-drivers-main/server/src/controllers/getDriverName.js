@@ -1,6 +1,7 @@
 const axios = require("axios");
-const { Driver, Team } = require("../db");
 const { Op } = require("sequelize");
+
+const { Driver, Team } = require("../db");
 
 const getDriverName = async (name) => {
   const apiResponse = await axios.get("http://localhost:5000/drivers");
@@ -35,7 +36,7 @@ const getDriverName = async (name) => {
     },
     include: [{ model: Team }],
   });
-  console.log(dbDriver);
+
   const dbDriverOrdered = dbDriver.map((driver) => ({
     id: driver.id,
     name: driver.name,
@@ -47,7 +48,6 @@ const getDriverName = async (name) => {
     teams: driver.Teams?.map((t) => t.name),
   }));
 
-  console.log(dbDriverOrdered);
   if (!apiResponseFilterOrdered.length && !dbDriverOrdered.length)
     throw Error("This driver not exist");
 

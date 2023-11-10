@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-import Card from "../Card/Card";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+
+import Card from "../Card/Card";
 
 import style from "../CardsContainer/cardsContainer.module.css";
 
 const CardsContainer = () => {
   const drivers = useSelector((state) => state.drivers);
-  console.log(drivers);
-  // const currentPage = useSelector((state) => state.page);
+
   const cardsPerPage = 9;
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -19,7 +19,9 @@ const CardsContainer = () => {
     const startIndex = currentPage * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
     const slicedDrivers = drivers.slice(startIndex, endIndex);
-
+    if (slicedDrivers.length === 0) {
+      setCurrentPage(0);
+    }
     setFilteredDrivers(slicedDrivers);
   }, [currentPage, drivers, cardsPerPage]);
 

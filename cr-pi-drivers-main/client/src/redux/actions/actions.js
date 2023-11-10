@@ -8,7 +8,6 @@ import {
   FILTER_TEAM,
   GET_CREATED,
   CLEAN_DETAIL,
-  CURRENT_PAGE,
   RESET,
 } from "../actions/actionTypes";
 
@@ -78,13 +77,6 @@ export const getFilterTeam = (filterTeam) => {
     } catch (error) {
       console.log(error);
     }
-  };
-};
-
-export const putCurrentPage = (page) => {
-  return {
-    type: CURRENT_PAGE,
-    payload: page,
   };
 };
 

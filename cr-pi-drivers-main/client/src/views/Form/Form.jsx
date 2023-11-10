@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+
 import { validateInput } from "./validations";
-import style from "../Form/form.module.css";
+
 import { getTeams } from "../../redux/actions/actions";
+
+import style from "../Form/form.module.css";
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -50,7 +53,7 @@ const Form = () => {
           description: "",
         })
       )
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.error));
   };
   const isFormValid = () => {
     let formValid = false;

@@ -3,9 +3,8 @@ const server = require("./src/server");
 const { conn } = require("./src/db.js");
 const PORT = 3001;
 
-//ALTER:TRUE MODIFICAR POR FORCE
 conn
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     server.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);

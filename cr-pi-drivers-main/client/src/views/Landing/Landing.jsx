@@ -1,8 +1,9 @@
-import style from "../Landing/landing.module.css";
+import Logo from "../../components/Logo/logo";
+import LinkButton from "../../components/LinkButton/LinkButton";
 import video from "../../assets/blackVideo.mp4";
 
-import LinkButton from "../../components/LinkButton/LinkButton";
-import Logo from "../../components/Logo/logo";
+import style from "../Landing/landing.module.css";
+
 const Landing = () => {
   return (
     <>

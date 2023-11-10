@@ -1,7 +1,10 @@
-import { useDispatch } from "react-redux";
-import { getDriversName, getDrivers } from "../../redux/actions/actions";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { getDriversName, getDrivers } from "../../redux/actions/actions";
+
 import style from "../SearchBar/searchBar.module.css";
+
 const Search = () => {
   const [search, setSearch] = useState("");
   // eslint-disable-next-line no-unused-vars

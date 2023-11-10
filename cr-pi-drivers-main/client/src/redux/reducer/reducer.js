@@ -8,7 +8,6 @@ import {
   FILTER_TEAM,
   GET_CREATED,
   CLEAN_DETAIL,
-  CURRENT_PAGE,
   RESET,
 } from "../actions/actionTypes";
 
@@ -71,7 +70,6 @@ const rootReducer = (state = initialState, action) => {
     case GET_DRIVERS_NAME:
       return { ...state, drivers: action.payload };
     case GET_CREATED:
-      // let driversCreate;
       if (action.payload === "ALL") {
         return {
           ...state,
@@ -91,26 +89,12 @@ const rootReducer = (state = initialState, action) => {
         };
       }
 
-      // if (action.payload === "CREATED") {
-      //   driversCreate = [...state.drivers].filter((driver) => isNaN(driver.id));
-      // }
-
-      // if (action.payload === "API") {
-      //   driversCreate = [...state.drivers].filter(
-      //     (driver) => !isNaN(driver.id)
-      //   );
-      // }
-
       return {
         ...state,
         ...state.drivers,
       };
 
     case FILTER_TEAM:
-      // const allDrivers = [...state.drivers];
-      // const filteredDrivers = allDrivers.filter((team) => {
-      //   return team.teams && team.teams.includes(action.payload);
-      // });
       return {
         ...state,
         drivers: [...state.drivers].filter(
@@ -123,8 +107,6 @@ const rootReducer = (state = initialState, action) => {
         drivers: [...state.driversBackUp],
       };
 
-    case CURRENT_PAGE:
-      return { ...state, page: action.payload };
     default:
       return { ...state };
   }

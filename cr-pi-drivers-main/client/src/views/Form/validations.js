@@ -4,6 +4,10 @@ export function validateInput(form) {
   if (form.name.length == 0) {
     errors.name = "⚠️ The name cannot be empty";
   }
+  if (form.name.length < 4) {
+    errors.name = "⚠️ The  name must contain at least 4 characters";
+  }
+
   if (!/^[a-zA-Z\s]+$/u.test(form.name)) {
     errors.name = " ⚠️ The name cannot have special characters or numbers";
   }
@@ -11,17 +15,13 @@ export function validateInput(form) {
   if (form.name.length > 20) {
     errors.name = "⚠️ The name cannot contain more than 20 characters.";
   }
-  if (form.lastname.length >= 1) {
-    if (!form.lastname) {
-      errors.lastname = " ⚠️ The surname cannot be empty";
+  if (form.lastname.length >= 0) {
+    if (form.lastname.length < 4) {
+      errors.lastname = " ⚠️ The last name must contain at least 4 characters";
     }
-    if (!/^[a-zA-Z\s]+$/u.test(form.lastname)) {
+    if (!/^[a-zA-Z]+$/u.test(form.lastname)) {
       errors.lastname =
-        " ⚠️ The surname cannot have special characters or numbers";
-    }
-    if (form.lastname.length > 20) {
-      errors.lastname =
-        " ⚠️ The surname cannot contain more than 20 characters.";
+        " ⚠️ the Last Name may not contain special characters or numbers";
     }
   }
 
@@ -41,7 +41,7 @@ export function validateInput(form) {
         form.image
       )
     ) {
-      errors.image = " ⚠️ must be a url ending in .jpg  or .jpeg";
+      errors.image = " ⚠️ Must be a URL ending in .jpg or .jpeg";
     }
   }
 

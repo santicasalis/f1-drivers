@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanDriverDetail, getDriver } from "../../redux/actions/actions";
 import { useParams } from "react-router-dom";
+
+import { cleanDriverDetail, getDriver } from "../../redux/actions/actions";
+
 import style from "../Detail/detail.module.css";
 
 const Detail = () => {
@@ -15,7 +17,6 @@ const Detail = () => {
     return () => dispatch(cleanDriverDetail());
   }, [id]);
 
-  console.log(driver.teams);
   return (
     <>
       <div className={style.detailContainer}>

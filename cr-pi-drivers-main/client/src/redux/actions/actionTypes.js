@@ -8,5 +8,3 @@ export const FILTER_TEAM = "FILTER_TEAM";
 export const GET_CREATED = "GET_CREATED";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const RESET = "RESET";
-
-export const CURRENT_PAGE = "CURRENT_PAGE";
